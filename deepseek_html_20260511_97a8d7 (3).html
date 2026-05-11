@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>♦ BLACK RENNER STORE ♦ - Loja Especializada em Documentos Personalizados</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #0a0a0a;
+            color: #ededed;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap');
+
+        .app {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 3rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding-bottom: 1.5rem;
+        }
+
+        .logo {
+            flex: 1;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .logo-text {
+            text-align: center;
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-text h1 .diamond {
+            color: #ff0000;
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            color: #ffffff;
+            margin-top: 0.25rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 0.5rem;
+            background: #141414;
+            padding: 0.4rem;
+            border-radius: 3rem;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            padding: 0.6rem 1.6rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #aaa;
+            font-family: inherit;
+        }
+
+        .nav-btn.active {
+            background: #2a2a2a;
+            color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .nav-btn:hover:not(.active) {
+            color: white;
+            background: #1e1e1e;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .card {
+            background: #111111;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.05);
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 35px -12px rgba(0,0,0,0.5);
+            border-color: rgba(255,255,255,0.15);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 280px;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+            background: #1a1a1a;
+        }
+
+        .card-content {
+            padding: 1.2rem 1.2rem 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-location {
+            color: #aaa;
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .price {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #f5f5f5;
+            margin: 0.6rem 0;
+        }
+
+        .btn-comprar {
+            width: 100%;
+            background: white;
+            border: none;
+            padding: 0.85rem;
+            border-radius: 2rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #000;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-family: inherit;
+            text-decoration: none;
+        }
+
+        .btn-comprar:hover {
+            background: #e0e0e0;
+            transform: scale(0.98);
+        }
+
+        .admin-panel {
+            background: #0d0d0d;
+            padding: 2rem;
+            border-radius: 2rem;
+            border: 1px solid #222;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .btn-logout {
+            background: #2c2c2c;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 2rem;
+            color: #ff8a7a;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .btn-logout:hover {
+            background: #3a2a2a;
+            color: #ff5e4a;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: #ccc;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: #1a1a1a;
+            border: 1px solid #2c2c2c;
+            border-radius: 1rem;
+            color: white;
+            font-family: inherit;
+            transition: 0.2s;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .image-input-group {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .image-input-group input {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        .image-input-group .image-preview {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            border: 1px solid #2c2c2c;
+        }
+
+        .btn-remove-img {
+            background: #2c2c2c;
+            border: none;
+            color: #ff8a7a;
+            padding: 0.5rem 1rem;
+            border-radius: 0.8rem;
+            cursor: pointer;
+        }
+
+        .btn-add-img {
+            background: #2a2a2a;
+            border: 1px dashed #555;
+            padding: 0.6rem;
+            border-radius: 1rem;
+            color: #aaa;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .file-input-wrapper {
+            background: #2a2a2a;
+            border: 1px dashed #555;
+            padding: 0.6rem;
+            border-radius: 1rem;
+            color: #aaa;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 0.5rem;
+            text-align: center;
+            transition: 0.2s;
+        }
+
+        .file-input-wrapper:hover {
+            background: #333;
+            border-color: #ffffff;
+            color: white;
+        }
+
+        .file-input-wrapper input {
+            display: none;
+        }
+
+        .btn-save {
+            background: white;
+            color: black;
+            font-weight: 700;
+            padding: 0.9rem 1.8rem;
+            border: none;
+            border-radius: 2rem;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-edit, .btn-delete {
+            background: #2c2c2c;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 1.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.8rem;
+            margin: 0 0.25rem;
+        }
+
+        .btn-edit {
+            color: #6b9fff;
+        }
+
+        .btn-delete {
+            color: #ff8a7a;
+        }
+
+        .properties-table {
+            overflow-x: auto;
+            margin-top: 1rem;
+        }
+
+        .properties-table table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .properties-table th, .properties-table td {
+            text-align: left;
+            padding: 1rem 0.5rem;
+            border-bottom: 1px solid #222;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            max-width: 1100px;
+            width: 100%;
+            background: #111;
+            border-radius: 2rem;
+            overflow: hidden;
+            position: relative;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        .login-modal {
+            max-width: 420px;
+        }
+
+        .login-box {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .login-box h2 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 0.9rem;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 1rem;
+            color: white;
+            margin: 1rem 0;
+            font-size: 1rem;
+        }
+
+        .btn-login {
+            background: white;
+            color: #000;
+            font-weight: 700;
+            padding: 0.9rem;
+            border: none;
+            border-radius: 2rem;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .btn-login:hover {
+            background: #e0e0e0;
+        }
+
+        .login-error {
+            color: #ff8a7a;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0,0,0,0.8);
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            z-index: 10;
+            transition: 0.2s;
+        }
+
+        .main-image-container {
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .main-image {
+            max-height: 450px;
+            width: 100%;
+            object-fit: contain;
+            object-position: center;
+            background: #000;
+            border-radius: 1rem;
+        }
+
+        .thumbnail-gallery {
+            padding: 1rem 2rem 1.5rem;
+            background: #0a0a0a;
+        }
+
+        .thumbnails {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .thumbnail.active {
+            border-color: #ffffff;
+        }
+
+        .modal-details {
+            padding: 2rem;
+            border-top: 1px solid #222;
+        }
+
+        .content-page {
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .terms-content, .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: #111;
+            border-radius: 1.5rem;
+            border: 1px solid #222;
+        }
+
+        .terms-content h2, .about-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            text-align: center;
+        }
+
+        .terms-content h3 {
+            font-size: 1.3rem;
+            margin: 2rem 0 1rem;
+            color: #ffffff;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .terms-content h4 {
+            font-size: 1.1rem;
+            margin: 1.2rem 0 0.8rem;
+            color: #ccc;
+        }
+
+        .terms-content p {
+            line-height: 1.6;
+            color: #aaa;
+            margin-bottom: 0rem;
+        }
+
+        .terms-content .highlight {
+            color: #ff8a7a;
+            font-weight: 600;
+        }
+
+        .terms-content .warning {
+            background: rgba(255,138,122,0.1);
+            padding: 1rem;
+            border-radius: 0.8rem;
+            border-left: 3px solid #ff8a7a;
+            margin: 1rem 0;
+        }
+
+        .about-content h3 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: #ffffff;
+        }
+
+        .about-content h4 {
+            font-size: 1.2rem;
+            margin: 1.5rem 0 1rem;
+            color: #ccc;
+        }
+
+        .about-content p {
+            line-height: 1.6;
+            color: #aaa;
+            margin-bottom: 1rem;
+        }
+
+        .about-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .about-content li {
+            line-height: 1.8;
+            color: #aaa;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .about-content li:before {
+            content: "✓";
+            color: #ffffff;
+            position: absolute;
+            left: 0;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .service-card {
+            background: #1a1a1a;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border: 1px solid #2a2a2a;
+            transition: transform 0.2s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #ffffff;
+        }
+
+        .service-card h4 {
+            color: #ffffff;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        .services-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background: #111;
+            border-radius: 1.5rem;
+            border: 1px solid #222;
+        }
+
+        .services-section h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #fff;
+        }
+
+        .services-section h2 .diamond {
+            color: #ff0000;
+        }
+
+        .services-section .service-block {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #222;
+        }
+
+        .services-section .service-block:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .services-section .service-block h3 {
+            font-size: 1.5rem;
+            color: #25D366;
+            margin-bottom: 1rem;
+        }
+
+        .services-section .service-block p {
+            line-height: 1.6;
+            color: #aaa;
+        }
+
+        .parcelas {
+            background: rgba(37,211,102,0.1);
+            padding: 1rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(37,211,102,0.3);
+        }
+
+        .parcelas p {
+            color: #25D366;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .access-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: 0.2s;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+        }
+
+        .access-btn:hover {
+            color: #cccccc;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .whatsapp-float {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            background: #25D366;
+            color: #000;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 0.8rem 1.8rem;
+            border-radius: 3rem;
+            margin: 1rem auto;
+            transition: all 0.3s ease;
+            width: auto;
+            max-width: 300px;
+            box-shadow: 0 4px 15px rgba(37,211,102,0.3);
+        }
+
+        .whatsapp-float:hover {
+            background: #20b859;
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+        }
+
+        .footer-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .whatsapp-resumo {
+            max-width: 400px;
+            margin: 0.5rem auto;
+            font-size: 0.8rem;
+            color: #aaa;
+            background: #1a1a1a;
+            padding: 0.8rem 1rem;
+            border-radius: 1rem;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 700px) {
+            .app { padding: 1rem; }
+            .thumbnail { width: 60px; height: 60px; }
+            .main-image { max-height: 300px; }
+            .modal-details { padding: 1rem; }
+            .header {
+                flex-direction: column;
+                align-items: center;
+            }
+            .logo {
+                flex-direction: column;
+            }
+            .nav-menu {
+                align-self: center;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav-btn {
+                padding: 0.4rem 1rem;
+                font-size: 0.8rem;
+            }
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+            .terms-content h3 {
+                font-size: 1.1rem;
+            }
+            .card-img {
+                height: 220px;
+                object-fit: contain;
+                object-position: center;
+            }
+            .services-section {
+                padding: 1rem;
+                margin: 2rem auto;
+            }
+            .services-section .service-block h3 {
+                font-size: 1.2rem;
+            }
+            .whatsapp-float {
+                font-size: 0.85rem;
+                padding: 0.6rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="app">
+    <div class="header">
+        <div class="logo">
+            <img class="logo-image" src="https://lh3.googleusercontent.com/sitesv/AA5AbUDIotYTh_C6JMJ7CgpvRMH_5tBdmjg17IhpsvhdGVJw8JCJEJw-Y39nH3gxcAA3oP5XE-IJ0__ZGTUTi_Vrqda8xhMrheckA_BbWL1TgFk-QOjJkhxOLponfMFZZ5F1JycTfby6ZmXibGmQ7RC-eceX_KJpn6NWxhYWtmClmLe8ixbv53QAzyvscRk=w16383" alt="BLACK RENNER STORE Logo">
+            <div class="logo-text">
+                <h1><span class="diamond">♦</span> BLACK RENNER STORE <span class="diamond">♦</span></h1>
+                <p>LOJA ESPECIALIZADA EM DOCUMENTOS PERSONALIZADOS</p>
+            </div>
+        </div>
+        <div class="nav-menu" id="navMenu">
+            <button class="nav-btn active" data-page="catalogo">Catálogo</button>
+            <button class="nav-btn" data-page="termos">Termos de Uso</button>
+            <button class="nav-btn" data-page="sobre">Sobre Nós</button>
+        </div>
+    </div>
+
+    <!-- Página Catálogo -->
+    <div id="catalogoPage" class="content-page">
+        <div id="propertiesGrid" class="grid"></div>
+    </div>
+
+    <!-- Página Termos de Uso -->
+    <div id="termosPage" class="content-page" style="display: none;">
+        <div class="terms-content">
+            <h2>📜 TERMOS DE USO</h2>
+            
+            <h3>1. Confirmação de Dados Pessoais</h3>
+            <p>Antes da emissão final do atestado, será enviada uma prévia contendo todas as informações pessoais para confirmação pelo cliente. Após a confirmação dos dados, procederemos com a impressão e carimbo do atestado.</p>
+            
+            <h3>2. Política de Cancelamento e Taxa de Reemissão</h3>
+            <p>Uma vez que o documento tenha sido impresso e carimbado, não será possível realizar devolução do valor pago. Caso haja necessidade de uma nova emissão devido a dados incorretos será cobrada uma taxa no valor total do pedido. Para cancelamentos com produto impresso e carimbado será devolvido 50% do valor total do produto.</p>
+            <p class="warning"><span class="highlight">⚠️ ATENÇÃO:</span> RECEITAS MÉDICAS APÓS EMISSÃO NÃO TEM REEMBOLSO!</p>
+            
+            <h4>2.1 Pagamento Sem Retorno</h4>
+            <p>Caso o pagamento seja efetuado e não haja retorno no chat, não será realizado o estorno do valor. O reembolso somente será possível se o contato for retomado antes que as mensagens temporárias desapareçam.</p>
+            
+            <h3>3. Procedimentos em Caso de Problemas</h3>
+            <p>Informe imediatamente qualquer erro de impressão, carimbo, ou outro problema identificado com o atestado no momento da entrega, ou em até 24 horas. Se o erro for de responsabilidade da nossa loja, providenciaremos uma nova via sem custos adicionais. Caso contrário, não nos responsabilizamos por devoluções após o envio do documento sem revisão prévia.</p>
+            
+            <h3>4. Qualidade e Autenticidade dos Documentos</h3>
+            <p>Nossos atestados são réplicas precisas dos originais, carimbados com um CRM ativo e autêntico, garantindo a mais alta qualidade nos produtos oferecidos. <span class="highlight">NÃO SÃO ORIGINAIS!</span></p>
+            
+            <h3>5. Entrega e Responsabilidades</h3>
+            <p>As entregas são realizadas exclusivamente por moto ou por foto. O custo do frete é de responsabilidade do cliente. É responsabilidade do cliente estar disponível para receber o produto e acompanhar a entrega.</p>
+            <p>Não nos responsabilizamos por qualquer mau uso dos atestados após a entrega.</p>
+            <p>Para pedidos digitais (cópia e PDF), a via original permanece arquivada por 15 dias. Após esse prazo, ela é descartada.</p>
+            
+            <h3>Dúvidas Sobre a Entrega do Produto</h3>
+            
+            <h4>1. Como funciona a entrega?</h4>
+            <p>Existem 2 tipos de entrega do produto final: envio do documento físico (ATRAVÉS DE MOTOBOY) ou documento digital (DOCUMENTO IMPRESSO E ESCANEADO EM FORMATO .PDF) ou apenas a foto do mesmo.</p>
+            
+            <h4>2. Há custo?</h4>
+            <p>Sim, apenas para o envio por Motoboy. O frete é pago pelo cliente deve ser pago previamente.</p>
+            
+            <h4>3. Posso retirar no local?</h4>
+            <p>Não, para manter a privacidade mútua, oferecemos apenas a opção de envio.</p>
+            
+            <h4>4. Como acompanho meu pedido?</h4>
+            <p>Enviamos o link da corrida e o código de liberação. Caso o cliente não esteja aguardando o motoboy, ele deve instruir a esperar 5 minutos. Se ninguém atender, a corrida será concluída e o pedido será descartado.</p>
+            
+            <p style="margin-top: 2rem; text-align: center; color: #ffffff; font-size: 1.2rem;">💎 BLACK RENNER STORE - Documentos Personalizados com Excelência 🏢</p>
+        </div>
+    </div>
+
+    <!-- Página Sobre Nós -->
+    <div id="sobrePage" class="content-page" style="display: none;">
+        <div class="about-content">
+            <h2>💎 QUEM SOMOS 💎</h2>
+            <p>Somos uma equipe dedicada e experiente, comprometida em fornecer serviços de alta qualidade na edição e confecção de uma variedade de documentos essenciais. Desde atestados médicos e receitas médicas até diplomas escolares, atestados de frequência, comprovantes de residência e cartões de meia entrada, estamos aqui para atender às suas necessidades com precisão e confiabilidade.</p>
+            
+            <h3>🏢 O QUE OFERECEMOS</h3>
+            
+            <div class="service-grid">
+                <div class="service-card">
+                    <h4>📋 Atestados Médicos e Receitas</h4>
+                    <p>Garantimos documentos precisos e bem elaborados para atender às exigências médicas e profissionais.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h4>🎓 Diplomas Escolares</h4>
+                    <p>Produzimos diplomas autênticos e verificáveis, respeitando as normas educacionais vigentes.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h4>📊 Atestados de Frequência</h4>
+                    <p>Documentos que comprovam regularidade e presença em atividades educacionais ou profissionais.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h4>🏠 Comprovantes de Residência</h4>
+                    <p>Facilitamos a comprovação de endereço com documentos aceitos oficialmente.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h4>🎫 Cartões de Meia Entrada</h4>
+                    <p>Serviço especializado na confecção de cartões que garantem benefícios culturais e educacionais.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h4>✨ E muito mais!</h4>
+                    <p>Atendemos solicitações personalizadas para suas necessidades específicas.</p>
+                </div>
+            </div>
+            
+            <h3>⭐ POR QUE ESCOLHER NOSSA EMPRESA?</h3>
+            
+            <div class="service-grid">
+                <div class="service-card">
+                    <h4>🔒 Confiabilidade</h4>
+                    <p>Comprometemo-nos com a integridade e autenticidade de todos os documentos que produzimos.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h4>💰 Acessibilidade</h4>
+                    <p>Oferecemos preços acessíveis, tornando nossos serviços acessíveis a todos que necessitam de documentos confiáveis e bem elaborados.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h4>✨ Comprometimento com a Qualidade</h4>
+                    <p>Utilizamos técnicas avançadas de edição e impressão para garantir documentos de alta qualidade.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h4>🤫 Discrição e Privacidade Garantidas</h4>
+                    <p>Nosso compromisso é com a total discrição e segurança dos seus dados pessoais. Não salvamos informações além do necessário para a confecção dos documentos.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h4>🚚 Entrega em Toda a Região</h4>
+                    <p>Oferecemos envio rápido e seguro para toda a região da Grande Florianópolis. Receba seus documentos no conforto do seu lar.</p>
+                </div>
+            </div>
+            
+            <p style="margin-top: 2rem; text-align: center; color: #ffffff; font-size: 1.2rem;">
+                💎 BLACK RENNER STORE - Documentos Personalizados com Excelência 🏢
+            </p>
+        </div>
+    </div>
+
+    <div id="adminView" style="display: none;">
+        <div class="admin-panel">
+            <div class="admin-header">
+                <h2>✧ Painel Administrativo ✧</h2>
+                <button id="logoutBtn" class="btn-logout">🚪 Sair</button>
+            </div>
+            <form id="propertyForm">
+                <div class="form-group">
+                    <label>Título</label>
+                    <input type="text" id="title" required placeholder="Ex: Atestado Médico">
+                </div>
+                <div class="form-group">
+                    <label>Preço (R$)</label>
+                    <input type="text" id="price" required placeholder="Ex: 50">
+                </div>
+                <div class="form-group">
+                    <label>Bairro/Região</label>
+                    <input type="text" id="neighborhood" required placeholder="Ex: em qualquer lugar">
+                </div>
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <textarea id="description" placeholder="Descreva o documento..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Múltiplas Imagens (selecione arquivos do seu dispositivo)</label>
+                    <div id="imagesContainer"></div>
+                    <div class="file-input-wrapper" id="fileInputWrapper">
+                        📁 Escolher arquivos do dispositivo
+                        <input type="file" id="imageFileInput" accept="image/*" multiple>
+                    </div>
+                </div>
+                <button type="submit" class="btn-save" id="saveBtn">➕ Salvar</button>
+            </form>
+
+            <h3>📋 Cadastrados</h3>
+            <div id="adminTableContainer" class="properties-table"></div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO DE TEXTOS ADICIONADA ANTES DO FOOTER -->
+    <div class="services-section">
+        <h2><span class="diamond">♦</span> NOSSOS SERVIÇOS <span class="diamond">♦</span></h2>
+        
+        <div class="parcelas">
+            <p>💰 PARCELE QUALQUER PRODUTO EM ATÉ 12X (COM JUROS)</p>
+        </div>
+        
+        <div class="service-block">
+            <h3>📋 ATESTADOS MÉDICOS</h3>
+            <p>Oferecemos atestados médicos de alta qualidade, atendendo as regiões de Palhoça, São José, Florianópolis, Biguaçu e outras cidades da região. Nossos serviços são personalizados, permitindo que o cliente escolha entre diversas opções de locais de atendimento. Os valores dos atestados variam de R$ 50 a R$ 150, garantindo acessibilidade sem comprometer a qualidade. Estamos comprometidos em oferecer um serviço confiável e eficiente para atender às necessidades médicas dos nossos clientes em toda a Grande Florianópolis e arredores.</p>
+        </div>
+        
+        <div class="service-block">
+            <h3>💊 RECEITA MÉDICA</h3>
+            <p>Nossa empresa oferece serviços de confecção de receitas médicas personalizadas, disponíveis nas cores azul, amarela e branca conforme necessário. Além das opções tradicionais, fornecemos receitas com termos específicos como Ozempic e Roacutan, atendendo às necessidades individuais de cada cliente com precisão e cuidado. Adicionalmente, oferecemos serviços relacionados à prescrição de hormônios, proporcionando soluções abrangentes para as necessidades médicas variadas de nossos clientes.</p>
+        </div>
+        
+        <div class="service-block">
+            <h3>🎫 CARTÃO DE DESCONTO DOADOR</h3>
+            <p>Descubra nossos cartões de meia entrada em PVC de alta qualidade, ideais para quem busca acesso facilitado e benefícios exclusivos. Oferecemos o Cartão de Doador de Sangue, a Carteira de Estudante e o ID Jovem, todos projetados para durabilidade e impressos com detalhes nítidos e cores vibrantes. Feitos em PVC resistente, garantem longa vida útil sendo reconhecidos nacionalmente, proporcionando acesso a eventos culturais, esportivos e muito mais. Simplifique sua vida com nossos cartões práticos e confiáveis.</p>
+        </div>
+        
+        <div class="service-block">
+            <h3>🏠 COMPROVANTES DE RESIDÊNCIA</h3>
+            <p>Apresentamos nosso serviço de emissão de comprovante de residência, ideal para quem precisa de um documento válido em locais que exigem essa comprovação ou para locatários que necessitam formalizar sua residência. Emitimos comprovantes precisos e aceitos amplamente, adequados tanto para uso pessoal quanto oficial. Oferecemos flexibilidade no local de emissão, garantindo conveniência e confiabilidade para atender às suas necessidades residenciais eficazmente e sem complicações.</p>
+        </div>
+    </div>
+
+    <!-- RODAPÉ -->
+    <div class="footer">
+        <div class="footer-buttons">
+            <div class="whatsapp-resumo">
+                📌 <strong>COMO FUNCIONA?</strong><br>
+                🩺 Atestados médicos personalizados (R$50 a R$150)<br>
+                💊 Receitas médicas (azul, amarela, branca)<br>
+                🎫 Carteira de estudante, ID Jovem, Cartão doador<br>
+                🏠 Comprovantes de residência validos<br>
+                📍 Atendemos Grande Florianópolis e todo Brasil (envio digital)<br>
+                💳 Parcelamos em até 12x<br>
+                👇 Clique no botão e tire suas dúvidas! 👇
+            </div>
+            
+            <a href="https://wa.me/5562992047832?text=Olá! Gostaria de saber mais sobre os serviços da BLACK RENNER STORE. Pode me explicar como funciona?" 
+               class="whatsapp-float" 
+               target="_blank">
+                💬 FALE CONOSCO NO WHATSAPP
+            </a>
+            
+            <p style="margin-top: 1rem; margin-bottom: 0.5rem; color: #ffffff;">BLACK RENNER STORE</p>
+            
+            <button id="accessAdminBtn" class="access-btn">🔐 Acesso Administrador</button>
+        </div>
+    </div>
+</div>
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <div class="main-image-container">
+            <img class="main-image" id="modalMainImage" src="" alt="Imagem do imóvel">
+        </div>
+        <div class="thumbnail-gallery" id="thumbnailGallery" style="display: none;">
+            <div class="thumbnails" id="thumbnailsContainer"></div>
+        </div>
+        <div class="modal-details" id="modalDetails"></div>
+    </div>
+</div>
+
+<div id="loginModal" class="modal">
+    <div class="modal-content login-modal">
+        <button class="modal-close" id="closeLoginBtn">&times;</button>
+        <div class="login-box">
+            <h2>🔐 Acesso Administrador</h2>
+            <p style="color: #888; margin-bottom: 1rem;">Digite a senha para acessar o painel administrativo</p>
+            <input type="password" id="passwordInput" placeholder="Digite a senha" autocomplete="off">
+            <button id="loginSubmitBtn" class="btn-login">Entrar</button>
+            <div id="loginError" class="login-error"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const STORAGE_KEY = 'blk_store_properties';
+    const ADMIN_PASSWORD = 'pix121@@';
+    let isLoggedIn = false;
+    
+    // 🔥 SEUS 8 PRODUTOS DE DOCUMENTOS PERSONALIZADOS - JÁ SALVOS 🔥
+    const defaultProperties = [
+        {
+            id: "prop1",
+            title: "DOCUMENTOS PERSONALIZADOS",
+            price: 75,
+            neighborhood: "em qualquer lugar",
+            description: "📄 Documentos personalizados sob medida para suas necessidades. Qualidade e agilidade na entrega. Entre em contato para mais detalhes!",
+            images: ["https://placehold.co/600x400/222/666?text=DOCUMENTOS+PERSONALIZADOS"]
+        },
+        {
+            id: "prop2",
+            title: "COMPROVANTE DE RESIDÊNCIA",
+            price: 50,
+            neighborhood: "em qualquer lugar",
+            description: "🏠 Comprovante de residência válido e aceito oficialmente. Ideal para locatários e quem precisa comprovar endereço. Entrega rápida!",
+            images: ["https://placehold.co/600x400/222/666?text=COMPROVANTE+RESIDENCIA"]
+        },
+        {
+            id: "prop3",
+            title: "VACINA COVID19",
+            price: 50,
+            neighborhood: "em qualquer lugar",
+            description: "💉 Certificado de vacinação COVID19. Documento personalizado com seus dados. Entrega digital em até 24h.",
+            images: ["https://placehold.co/600x400/222/666?text=VACINA+COVID19"]
+        },
+        {
+            id: "prop4",
+            title: "DIPLOMAS ESCOLARES",
+            price: 200,
+            neighborhood: "em qualquer lugar",
+            description: "🎓 Diploma escolar personalizado. Ensino fundamental, médio ou superior. Qualidade e autenticidade garantidas!",
+            images: ["https://placehold.co/600x400/222/666?text=DIPLOMAS+ESCOLARES"]
+        },
+        {
+            id: "prop5",
+            title: "CARTEIRA MEIA ENTRADA",
+            price: 75,
+            neighborhood: "em qualquer lugar",
+            description: "🎫 Carteira de meia entrada em PVC de alta qualidade. Válida em cinemas, teatros, shows e eventos culturais. Garanta seu benefício!",
+            images: ["https://placehold.co/600x400/222/666?text=CARTEIRA+MEIA+ENTRADA"]
+        },
+        {
+            id: "prop6",
+            title: "RECEITA MEDICA",
+            price: 50,
+            neighborhood: "em qualquer lugar",
+            description: "💊 Receita médica personalizada (azul, amarela ou branca). Termos específicos como Ozempic e Roacutan disponíveis. Entrega rápida!",
+            images: ["https://placehold.co/600x400/222/666?text=RECEITA+MEDICA"]
+        },
+        {
+            id: "prop7",
+            title: "ATESTADO MEDICO",
+            price: 50,
+            neighborhood: "em qualquer lugar",
+            description: "🩺 Atestado médico oficial com CRM ativo. Ideal para justificar faltas. Entrega digital em PDF ou física via motoboy. Rápido e seguro!",
+            images: ["https://i.imgur.com/NCM2ee4.jpeg"]
+        },
+        {
+            id: "prop8",
+            title: "CARTEIRA DE ESTUDANTE",
+            price: 50,
+            neighborhood: "em qualquer lugar",
+            description: "🎓 Carteira de estudante oficial com validade nacional. Aproveite meia-entrada em cultura, lazer e educação. Documento personalizado com foto e dados.",
+            images: ["https://lh3.googleusercontent.com/sitesv/AA5AbUCr9CXO7UmOx280NRjlDLU6J1FjBvn0sVEqWftxBFF_6SSkra2yj8RS1-0qsfenz2YKhuyMF1W5Gp_w5D5yxAtyGONgdEakQ3-kZrop2oHEx60Ciuy_-sUnoP3lmvu1sdUCj0g24zXfcHbY_gIU0JdIU4Tp-QAhr9hVAciG2Gey2yccCadcza3CrhoIddTNeOE7OPaOSMF9b4hWLY9honO1mHolzKD2RZY7=w1280"]
+        }
+    ];
+
+    function loadProperties() {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+            return JSON.parse(stored);
+        }
+        return defaultProperties;
+    }
+
+    let properties = loadProperties();
+    let editingId = null;
+    let currentModalProperty = null;
+    let currentImageIndex = 0;
+
+    function saveToLocalStorage() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(properties));
+    }
+
+    function generateId() {
+        return Date.now().toString(36) + Math.random().toString(36).substring(2);
+    }
+
+    function formatPrice(price) {
+        return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price);
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    function fileToBase64(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
+    }
+
+    function addImageInput(value = '', showRemove = true) {
+        const container = document.getElementById('imagesContainer');
+        const div = document.createElement('div');
+        div.className = 'image-input-group';
+        const previewHtml = value && (value.startsWith('data:image') || value.startsWith('http')) 
+            ? `<img class="image-preview" src="${value}" alt="Preview">` 
+            : '';
+        div.innerHTML = `
+            <input type="text" class="image-url" value="${escapeHtml(value)}" placeholder="URL da imagem ou selecione arquivo" style="flex: 2;">
+            ${previewHtml}
+            <button type="button" class="btn-remove-img" ${!showRemove ? 'style="display:none"' : ''}>✖</button>
+        `;
+        container.appendChild(div);
+        if (showRemove) {
+            div.querySelector('.btn-remove-img').addEventListener('click', () => div.remove());
+        }
+    }
+
+    function renderPublicGrid() {
+        const grid = document.getElementById('propertiesGrid');
+        if (!grid) return;
+        if (properties.length === 0) {
+            grid.innerHTML = '<div class="empty-state">✨ Nenhum produto disponível.</div>';
+            return;
+        }
+        grid.innerHTML = properties.map(prop => {
+            const mainImage = prop.images && prop.images.length > 0 ? prop.images[0] : 'https://placehold.co/600x400/222/666?text=BLACK';
+            return `
+                <div class="card" data-id="${prop.id}">
+                    <img class="card-img" src="${mainImage}" alt="${escapeHtml(prop.title)}" loading="lazy">
+                    <div class="card-content">
+                        <div class="card-title">${escapeHtml(prop.title)}</div>
+                        <div class="card-location">📍 ${escapeHtml(prop.neighborhood)}</div>
+                        <div class="price">${formatPrice(prop.price)}</div>
+                        <div class="btn-comprar" data-whats='${JSON.stringify(prop)}'>🛒 COMPRA AGORA ONLINE</div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (e.target.classList.contains('btn-comprar')) return;
+                const id = card.getAttribute('data-id');
+                openModal(id);
+            });
+        });
+
+        document.querySelectorAll('.btn-comprar').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const prop = JSON.parse(btn.getAttribute('data-whats'));
+                const msg = `Olá! Gostaria de comprar: "${prop.title}". Valor: ${formatPrice(prop.price)}.`;
+                window.open(`https://wa.me/5562992047832?text=${encodeURIComponent(msg)}`, '_blank');
+            });
+        });
+    }
+
+    function openModal(id) {
+        const prop = properties.find(p => p.id === id);
+        if (!prop) return;
+        currentModalProperty = prop;
+        currentImageIndex = 0;
+        updateModalContent();
+        document.getElementById('modal').classList.add('active');
+    }
+
+    function updateModalContent() {
+        if (!currentModalProperty) return;
+        
+        const images = currentModalProperty.images || [];
+        const mainImage = document.getElementById('modalMainImage');
+        mainImage.src = images[currentImageIndex] || 'https://placehold.co/800x450/222/666?text=Sem+imagem';
+        
+        const thumbnailsContainer = document.getElementById('thumbnailsContainer');
+        const thumbnailGallery = document.getElementById('thumbnailGallery');
+        
+        if (images.length > 1) {
+            thumbnailGallery.style.display = 'block';
+            thumbnailsContainer.innerHTML = images.map((img, idx) => `
+                <img src="${img}" class="thumbnail ${idx === currentImageIndex ? 'active' : ''}" data-index="${idx}" alt="Miniatura ${idx + 1}">
+            `).join('');
+            
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.addEventListener('click', (e) => {
+                    const index = parseInt(thumb.getAttribute('data-index'));
+                    currentImageIndex = index;
+                    updateModalContent();
+                });
+            });
+        } else {
+            thumbnailGallery.style.display = 'none';
+        }
+        
+        const detailsHtml = `
+            <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem;">${escapeHtml(currentModalProperty.title)}</h2>
+            <div style="color: #aaa; margin-bottom: 1rem;">📍 ${escapeHtml(currentModalProperty.neighborhood)}</div>
+            <div class="price" style="font-size: 2rem;">${formatPrice(currentModalProperty.price)}</div>
+            <div style="margin: 1.5rem 0;">
+                <strong>📝 Descrição completa:</strong>
+                <p style="margin-top: 0.8rem; line-height: 1.6; color: #ccc;">${escapeHtml(currentModalProperty.description) || 'Sem descrição detalhada.'}</p>
+            </div>
+            <a href="#" class="btn-comprar" id="modalComprarBtn" style="display: inline-block; width: auto; padding: 1rem 2rem; text-decoration: none; text-align: center;">🛒 COMPRA AGORA ONLINE</a>
+        `;
+        document.getElementById('modalDetails').innerHTML = detailsHtml;
+        
+        const modalComprar = document.getElementById('modalComprarBtn');
+        modalComprar.addEventListener('click', (e) => {
+            e.preventDefault();
+            const msg = `Olá! Tenho interesse em comprar: "${currentModalProperty.title}". Gostaria de mais informações.`;
+            window.open(`https://wa.me/5562992047832?text=${encodeURIComponent(msg)}`, '_blank');
+        });
+    }
+
+    function renderAdminTable() {
+        if (!isLoggedIn) return;
+        const container = document.getElementById('adminTableContainer');
+        if (!container) return;
+        if (properties.length === 0) {
+            container.innerHTML = '<div class="empty-state">Nenhum produto cadastrado.</div>';
+            return;
+        }
+        const html = `
+            <table>
+                <thead>
+                    <tr><th>Título</th><th>Preço</th><th>Bairro/Região</th><th>Imagens</th><th>Ações</th></tr>
+                </thead>
+                <tbody>
+                    ${properties.map(prop => `
+                        <tr>
+                            <td><strong>${escapeHtml(prop.title)}</strong></td>
+                            <td>${formatPrice(prop.price)}</div>
+                            <td>${escapeHtml(prop.neighborhood)}</div>
+                            <td>${prop.images ? prop.images.length : 0} fotos</div>
+                            <td>
+                                <button class="btn-edit" data-id="${prop.id}">✏ Editar</button>
+                                <button class="btn-delete" data-id="${prop.id}">🗑 Excluir</button>
+                            </div>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        `;
+        container.innerHTML = html;
+        document.querySelectorAll('.btn-edit').forEach(btn => {
+            btn.addEventListener('click', () => editProperty(btn.getAttribute('data-id')));
+        });
+        document.querySelectorAll('.btn-delete').forEach(btn => {
+            btn.addEventListener('click', () => deleteProperty(btn.getAttribute('data-id')));
+        });
+    }
+
+    function editProperty(id) {
+        if (!isLoggedIn) return;
+        const prop = properties.find(p => p.id === id);
+        if (!prop) return;
+        editingId = id;
+        document.getElementById('saveBtn').innerText = '✏ Atualizar';
+        document.getElementById('title').value = prop.title;
+        document.getElementById('price').value = prop.price;
+        document.getElementById('neighborhood').value = prop.neighborhood;
+        document.getElementById('description').value = prop.description || '';
+        
+        const container = document.getElementById('imagesContainer');
+        container.innerHTML = '';
+        const images = prop.images && prop.images.length ? prop.images : [''];
+        images.forEach((img) => {
+            addImageInput(img, true);
+        });
+    }
+
+    function deleteProperty(id) {
+        if (!isLoggedIn) return;
+        if (confirm('Remover este produto permanentemente?')) {
+            properties = properties.filter(p => p.id !== id);
+            saveToLocalStorage();
+            renderPublicGrid();
+            renderAdminTable();
+            if (currentModalProperty && currentModalProperty.id === id) {
+                document.getElementById('modal').classList.remove('active');
+            }
+        }
+    }
+
+    function collectFormData() {
+        const imagesInputs = document.querySelectorAll('#imagesContainer .image-url');
+        const images = Array.from(imagesInputs).map(inp => inp.value.trim()).filter(url => url !== '');
+        return {
+            title: document.getElementById('title').value.trim(),
+            price: parseFloat(document.getElementById('price').value.replace(/\./g, '').replace(',', '.')),
+            neighborhood: document.getElementById('neighborhood').value.trim(),
+            description: document.getElementById('description').value.trim(),
+            images: images.length ? images : ['https://placehold.co/800x450/222/666?text=BLACK+RENNER']
+        };
+    }
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        if (!isLoggedIn) return;
+        
+        const data = collectFormData();
+        if (!data.title || isNaN(data.price) || !data.neighborhood) {
+            alert('Preencha todos os campos obrigatórios.');
+            return;
+        }
+        
+        if (editingId) {
+            const index = properties.findIndex(p => p.id === editingId);
+            if (index !== -1) {
+                properties[index] = { ...properties[index], ...data, id: editingId };
+            }
+            editingId = null;
+            document.getElementById('saveBtn').innerText = '➕ Salvar';
+        } else {
+            const newProperty = { id: generateId(), ...data };
+            properties.unshift(newProperty);
+        }
+        
+        saveToLocalStorage();
+        resetForm();
+        renderPublicGrid();
+        renderAdminTable();
+        alert('Salvo com sucesso!');
+    }
+
+    function resetForm() {
+        document.getElementById('propertyForm').reset();
+        document.getElementById('imagesContainer').innerHTML = '';
+        addImageInput('', false);
+        editingId = null;
+        document.getElementById('saveBtn').innerText = '➕ Salvar';
+    }
+
+    function navigateTo(page) {
+        document.getElementById('catalogoPage').style.display = 'none';
+        document.getElementById('termosPage').style.display = 'none';
+        document.getElementById('sobrePage').style.display = 'none';
+        
+        if (page === 'catalogo') {
+            document.getElementById('catalogoPage').style.display = 'block';
+            renderPublicGrid();
+        } else if (page === 'termos') {
+            document.getElementById('termosPage').style.display = 'block';
+        } else if (page === 'sobre') {
+            document.getElementById('sobrePage').style.display = 'block';
+        }
+        
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-page') === page) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    function showLoginModal() {
+        document.getElementById('loginModal').classList.add('active');
+        document.getElementById('passwordInput').value = '';
+        document.getElementById('loginError').innerHTML = '';
+    }
+
+    function closeLoginModal() {
+        document.getElementById('loginModal').classList.remove('active');
+    }
+
+    function attemptLogin() {
+        const password = document.getElementById('passwordInput').value;
+        if (password === ADMIN_PASSWORD) {
+            isLoggedIn = true;
+            closeLoginModal();
+            showAdminPanel();
+        } else {
+            document.getElementById('loginError').innerHTML = '❌ Senha incorreta. Tente novamente.';
+        }
+    }
+
+    function showAdminPanel() {
+        document.getElementById('adminView').style.display = 'block';
+        renderAdminTable();
+        
+        document.getElementById('catalogoPage').style.display = 'none';
+        document.getElementById('termosPage').style.display = 'none';
+        document.getElementById('sobrePage').style.display = 'none';
+        
+        const navMenu = document.getElementById('navMenu');
+        if (!document.querySelector('.nav-btn[data-page="admin"]')) {
+            const adminNav = document.createElement('button');
+            adminNav.className = 'nav-btn';
+            adminNav.setAttribute('data-page', 'admin');
+            adminNav.innerText = 'Painel Admin';
+            adminNav.addEventListener('click', () => {
+                if (isLoggedIn) {
+                    document.getElementById('catalogoPage').style.display = 'none';
+                    document.getElementById('termosPage').style.display = 'none';
+                    document.getElementById('sobrePage').style.display = 'none';
+                    document.getElementById('adminView').style.display = 'block';
+                    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+                    adminNav.classList.add('active');
+                    renderAdminTable();
+                }
+            });
+            navMenu.appendChild(adminNav);
+        }
+        
+        document.querySelector('.nav-btn[data-page="admin"]').click();
+    }
+
+    function logout() {
+        isLoggedIn = false;
+        document.getElementById('adminView').style.display = 'none';
+        navigateTo('catalogo');
+        
+        const adminNav = document.querySelector('.nav-btn[data-page="admin"]');
+        if (adminNav) adminNav.remove();
+        
+        resetForm();
+    }
+
+    function init() {
+        renderPublicGrid();
+        
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (btn.getAttribute('data-page') === 'admin') return;
+                navigateTo(btn.getAttribute('data-page'));
+            });
+        });
+        
+        navigateTo('catalogo');
+        
+        document.getElementById('accessAdminBtn').addEventListener('click', showLoginModal);
+        document.getElementById('loginSubmitBtn').addEventListener('click', attemptLogin);
+        document.getElementById('closeLoginBtn').addEventListener('click', closeLoginModal);
+        document.getElementById('logoutBtn').addEventListener('click', logout);
+        document.getElementById('propertyForm').addEventListener('submit', handleSubmit);
+        
+        const fileInput = document.getElementById('imageFileInput');
+        fileInput.addEventListener('change', async (e) => {
+            const files = Array.from(e.target.files);
+            for (const file of files) {
+                const base64 = await fileToBase64(file);
+                addImageInput(base64, true);
+            }
+            fileInput.value = '';
+        });
+        
+        addImageInput('', false);
+        
+        const modal = document.getElementById('modal');
+        const loginModal = document.getElementById('loginModal');
+        document.querySelectorAll('.modal-close').forEach(btn => {
+            btn.addEventListener('click', () => {
+                modal.classList.remove('active');
+                loginModal.classList.remove('active');
+            });
+        });
+        modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
+        loginModal.addEventListener('click', (e) => { if (e.target === loginModal) loginModal.classList.remove('active'); });
+        
+        document.getElementById('passwordInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') attemptLogin();
+        });
+    }
+    
+    init();
+</script>
+</body>
+</html>
